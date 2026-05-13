@@ -1,66 +1,93 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // நேவிகேஷன் செய்ய இதைச் சேர்க்கவும்
+import { useNavigate } from "react-router-dom";
 
 function About() {
-  const navigate = useNavigate(); // navigate ஃபங்க்ஷனை அசைன் செய்கிறோம்
+  const navigate = useNavigate();
 
   const goToContact = () => {
-    navigate("/contact"); // Contact பக்கத்தின் path-ஐ இங்கே கொடுக்கவும்
+    navigate("/contact");
+  };
+
+  const styles = {
+    main: { fontFamily: "'Inter', sans-serif", color: "#333", lineHeight: "1.6" },
+    hero: { padding: "80px 20px", textAlign: "center", backgroundColor: "#f9f9f9" },
+    subTitle: { color: "#ffcc00", fontWeight: "700", letterSpacing: "2px", fontSize: "14px" },
+    title: { fontSize: "42px", fontWeight: "800", margin: "20px 0", color: "#111" },
+    section: { maxWidth: "1100px", margin: "0 auto", padding: "60px 20px" },
+    grid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "40px", marginTop: "40px" },
+    block: { marginBottom: "40px" },
+    h2: { fontSize: "28px", fontWeight: "700", marginBottom: "20px", color: "#111", borderLeft: "5px solid #ffcc00", paddingLeft: "15px" },
+    list: { listStyle: "none", padding: 0 },
+    listItem: { marginBottom: "10px", display: "flex", alignItems: "start", gap: "10px" },
+    check: { color: "#ffcc00", fontWeight: "bold" },
+    cta: { textAlign: "center", padding: "80px 20px", backgroundColor: "#111", color: "#fff" },
+    btn: { backgroundColor: "#ffcc00", color: "#000", border: "none", padding: "15px 40px", borderRadius: "50px", fontWeight: "700", cursor: "pointer", marginTop: "20px", fontSize: "16px" }
   };
 
   return (
-    <main className="about-page">
-      <section className="about-hero">
-        <span>ABOUT US</span>
-        <h1>Creative Editing Solutions For Modern Real Estate</h1>
+    <main style={styles.main}>
+      {/* Hero Section */}
+      <section style={styles.hero}>
+        <span style={styles.subTitle}>ABOUT ZERO PIX CREATIVE</span>
+        <h1 style={styles.title}>Elevating Real Estate Visuals <br/> with Precision & Creativity</h1>
+        <p style={{ maxWidth: "800px", margin: "0 auto", color: "#666" }}>
+          Zero Pix Creative is a creative studio specializing in real estate photo and video editing, 
+          photography, videography, and graphic design, with a strong focus on professional colour correction and visual enhancement.
+        </p>
       </section>
 
-      <section className="about-content">
-        <div className="content-block">
-          <h2>Who We Are</h2>
-          <p>
-            Zero Pix Creative is a creative studio specializing in real estate photo and video 
-            editing, along with photography, videography, graphic design, and video editing 
-            services. We are passionate about transforming property visuals into compelling 
-            marketing assets.
-          </p>
+      {/* Content Section */}
+      <section style={styles.section}>
+        <div style={styles.grid}>
+          <div style={styles.block}>
+            <h2 style={styles.h2}>Who We Are</h2>
+            <p>
+              Our work combines creativity with precision to deliver clean, high-quality visuals that highlight properties 
+              and brands in the best possible way. We focus on detail, lighting, and colour accuracy to enhance 
+              listings and build a strong professional presence.
+            </p>
+          </div>
+
+          <div style={styles.block}>
+            <h2 style={styles.h2}>What We Do</h2>
+            <ul style={styles.list}>
+              <li style={styles.listItem}><span style={styles.check}>•</span> Real Estate Photo Editing (HDR, Twilight, Virtual Staging)</li>
+              <li style={styles.listItem}><span style={styles.check}>•</span> Video Editing (Walkthroughs, Cinematic, Social Media)</li>
+              <li style={styles.listItem}><span style={styles.check}>•</span> Photography & Videography (Architectural, Commercial, Events)</li>
+              <li style={styles.listItem}><span style={styles.check}>•</span> Graphic Design (Marketing, Packaging, Motion Graphics)</li>
+            </ul>
+          </div>
         </div>
 
-        <div className="content-block">
-          <h2>Our Approach</h2>
-          <p>
-            We combine creativity with precision to deliver high-quality visuals that highlight 
-            properties in the best possible way. Every project is approached with attention to 
-            detail and a deep understanding of the real estate market's visual needs.
-          </p>
-        </div>
-
-        <div className="content-block">
-          <h2>What We Do</h2>
-          <p>
-            From property photo retouching and HDR editing to cinematic walkthrough videos, 
-            we help realtors and businesses present their properties professionally. Our team 
-            specializes in visual storytelling that converts viewers into leads.
-          </p>
-        </div>
-
-        <div className="why-choose">
-          <h2>Why Choose Us</h2>
-          <ul>
-            <li>✓ Expert team with years of real estate visual experience</li>
-            <li>✓ Fast turnaround times without compromising quality</li>
-            <li>✓ Scalable solutions for projects of any size</li>
-            <li>✓ Dedicated support and communication</li>
-          </ul>
+        {/* Why Outsource Section */}
+        <div style={{ marginTop: "60px" }}>
+          <h2 style={styles.h2}>Why Outsource to Us?</h2>
+          <div style={styles.grid}>
+            <div style={styles.block}>
+              <h4 style={{ fontWeight: "700" }}>Expert Visual Enhancements</h4>
+              <p style={{ fontSize: "14px", color: "#666" }}>Ordinary property photos are transformed into eye-catching images that attract buyers' attention.</p>
+            </div>
+            <div style={styles.block}>
+              <h4 style={{ fontWeight: "700" }}>Fast Turnaround Delivery</h4>
+              <p style={{ fontSize: "14px", color: "#666" }}>Get optimized images quickly to publish listings faster and stay ahead in the market.</p>
+            </div>
+            <div style={styles.block}>
+              <h4 style={{ fontWeight: "700" }}>Consistent Quality</h4>
+              <p style={{ fontSize: "14px", color: "#666" }}>Uniform enhancements in lighting, colour, and clarity across all your listings.</p>
+            </div>
+            <div style={styles.block}>
+              <h4 style={{ fontWeight: "700" }}>Cost-Effective Solutions</h4>
+              <p style={{ fontSize: "14px", color: "#666" }}>Avoid the expense of in-house tools and staff while gaining expert results at competitive rates.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="ready-to-work">
-        <h2>Ready to Work Together?</h2>
-        <p>Let's discuss how we can help elevate your property presentations.</p>
-        
-        {/* onClick ஃபங்க்ஷனை இங்கே சேர்த்துள்ளேன் */}
-        <button className="btn-yellow" onClick={goToContact}>
+      {/* CTA Section */}
+      <section style={styles.cta}>
+        <h2 style={{ color: "#fff", fontSize: "32px" }}>Ready to Elevate Your Property Presentation?</h2>
+        <p style={{ color: "#ccc" }}>We generate no-obligation quotes within 24 hours for every request.</p>
+        <button style={styles.btn} onClick={goToContact}>
           GET IN TOUCH
         </button>
       </section>

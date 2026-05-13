@@ -24,11 +24,11 @@ body {
   z-index: 1000;
 }
 
-.logo-container img {
-  height: 10%;
-  width:15%;
+/* .logo-container img {
+  height: 20%;
+  width:20%;
   object-fit: contain;
-}
+} */
 
 nav {
   display: flex;
