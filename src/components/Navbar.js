@@ -80,7 +80,7 @@ function Navbar() {
 
         {/* Navigation - Far Right */}
         <nav style={navLinksStyle}>
-          {["Home", "About", "Services", "Work"].map((item) => (
+          {["Home", "About", "Services", "Portfolio"].map((item) => (
             <NavLink
               key={item}
               to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
