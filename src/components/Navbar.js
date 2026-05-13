@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
-import logoImg from "./logo1.png"; //
+import logoImg from "./logo1.png"; 
 
 function Navbar() {
   const [hovered, setHovered] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
 
-  // விண்டோ அளவை செக் செய்ய
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 800);
     window.addEventListener("resize", handleResize);
@@ -16,7 +15,7 @@ function Navbar() {
   // --- Styles ---
   const headerStyle = {
     backgroundColor: "#fff",
-    padding: "15px 0",
+    padding: isMobile ? "10px 0" : "15px 0",
     borderBottom: "1px solid #f0f0f0",
     position: "sticky",
     top: 0,
@@ -29,47 +28,50 @@ function Navbar() {
     margin: "0 auto",
     padding: "0 20px",
     display: "flex",
-    flexDirection: isMobile ? "column" : "row", // மொபைலில் செங்குத்தாக மாறும்
+    flexDirection: "row", // Always row to keep logo left and nav right
     justifyContent: "space-between",
     alignItems: "center",
-    gap: isMobile ? "15px" : "0"
   };
 
   const navLinksStyle = {
     display: "flex",
-    flexWrap: "wrap", // மொபைலில் இடம் பற்றாக்குறையைத் தவிர்க்க
-    justifyContent: "center",
     alignItems: "center",
-    gap: isMobile ? "15px" : "30px"
+    gap: isMobile ? "10px" : "30px" // Tighter gap for mobile
   };
 
   const getLinkStyle = (name) => ({
     textDecoration: "none",
-    color: hovered === name ? "#ffcc00" : "#333", // Hover yellow
-    fontWeight: "500",
-    fontSize: isMobile ? "14px" : "15px",
-    transition: "0.3s ease"
+    color: hovered === name ? "#ffcc00" : "#333",
+    fontWeight: "600",
+    fontSize: isMobile ? "12px" : "15px", // Smaller text on mobile
+    transition: "0.3s ease",
+    display: isMobile && (name === "Portfolio" || name === "About") ? "none" : "block" // Optional: Hide extra links on very small screens to save space
   });
 
   const contactBtnStyle = {
     backgroundColor: "#1a1a1a",
     color: "#fff",
-    padding: isMobile ? "8px 20px" : "10px 25px",
+    padding: isMobile ? "8px 15px" : "12px 28px",
     borderRadius: "50px",
     textDecoration: "none",
     fontWeight: "700",
-    fontSize: isMobile ? "13px" : "15px"
+    fontSize: isMobile ? "11px" : "14px",
+    marginLeft: isMobile ? "5px" : "10px"
   };
 
   return (
     <header style={headerStyle}>
       <div style={containerStyle}>
-        {/* Logo */}
-        <Link to="/">
-          <img src={logoImg} alt="Zero Pix Logo" style={{ height: isMobile ? "45px" : "75px", width: "auto" }} />
+        {/* Logo - Stays Left */}
+        <Link to="/" style={{ display: "flex", alignItems: "center" }}>
+          <img 
+            src={logoImg} 
+            alt="Zero Pix Logo" 
+            style={{ height: isMobile ? "35px" : "65px", width: "auto" }} 
+          />
         </Link>
 
-        {/* Links */}
+        {/* Navigation - Stays Right */}
         <nav style={navLinksStyle}>
           {["Home", "About", "Services", "Portfolio"].map((item) => (
             <NavLink
@@ -77,7 +79,7 @@ function Navbar() {
               to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
               style={({ isActive }) => ({
                 ...getLinkStyle(item),
-                color: isActive || hovered === item ? "#ffcc00" : "#333" // Active yellow
+                color: isActive ? "#ffcc00" : (hovered === item ? "#ffcc00" : "#333")
               })}
               onMouseEnter={() => setHovered(item)}
               onMouseLeave={() => setHovered(null)}
@@ -86,6 +88,7 @@ function Navbar() {
             </NavLink>
           ))}
 
+          {/* Contact Button */}
           <Link to="/contact" style={contactBtnStyle}>CONTACT</Link>
         </nav>
       </div>
