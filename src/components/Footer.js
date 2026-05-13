@@ -76,7 +76,7 @@ function Footer() {
             <Link to="/" style={styles.linkItem}>Home</Link>
             <Link to="/about" style={styles.linkItem}>About</Link>
             <Link to="/services" style={styles.linkItem}>Services</Link>
-            <Link to="/work" style={styles.linkItem}>Work</Link>
+            <Link to="/Portfolio" style={styles.linkItem}>Portfolio</Link>
             <Link to="/contact" style={{...styles.linkItem}}>Contact</Link>
           </div>
         </div>
